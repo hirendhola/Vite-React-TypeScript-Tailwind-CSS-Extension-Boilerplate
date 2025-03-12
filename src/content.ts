@@ -33,15 +33,18 @@ document.addEventListener('DOMContentLoaded', () => {
   injectStatus();
 
   // Example: Send a message to the background script
-  browserAPI.runtime.sendMessage({
-    type: 'CONTENT_READY',
-    url: window.location.href,
-    title: document.title
-  }).then((response: any) => {
-    console.log('Background script response:', response);
-  }).catch((error: any) => {
-    console.error('Error communicating with background script:', error);
-  });
+  browserAPI.runtime
+    .sendMessage({
+      type: 'CONTENT_READY',
+      url: window.location.href,
+      title: document.title,
+    })
+    .then((response: any) => {
+      console.log('Background script response:', response);
+    })
+    .catch((error: any) => {
+      console.error('Error communicating with background script:', error);
+    });
 });
 
 // Listen for messages from popup or background
@@ -54,13 +57,16 @@ browserAPI.runtime.onMessage.addListener((message: any, _sender: any, sendRespon
       data: {
         url: window.location.href,
         title: document.title,
-        metaDescription: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+        metaDescription:
+          document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
         h1: Array.from(document.querySelectorAll('h1')).map(h => h.textContent),
-        images: Array.from(document.querySelectorAll('img')).map(img => ({
-          src: img.src,
-          alt: img.alt
-        })).slice(0, 10) // Limit to 10 images
-      }
+        images: Array.from(document.querySelectorAll('img'))
+          .map(img => ({
+            src: img.src,
+            alt: img.alt,
+          }))
+          .slice(0, 10), // Limit to 10 images
+      },
     });
     return true;
   }

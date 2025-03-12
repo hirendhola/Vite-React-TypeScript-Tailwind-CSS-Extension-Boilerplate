@@ -9,24 +9,30 @@ browserAPI.runtime.onMessage.addListener((message: any, sender: any, sendRespons
 
   // Example of processing different message types
   if (message.type === 'GET_DATA') {
-    browserAPI.storage.local.get('data').then((result: { data: any; }) => {
-      sendResponse({ success: true, data: result.data || {} });
-    }).catch((error: { message: any; }) => {
-      console.error('Error getting data:', error);
-      sendResponse({ success: false, error: error.message });
-    });
+    browserAPI.storage.local
+      .get('data')
+      .then((result: { data: any }) => {
+        sendResponse({ success: true, data: result.data || {} });
+      })
+      .catch((error: { message: any }) => {
+        console.error('Error getting data:', error);
+        sendResponse({ success: false, error: error.message });
+      });
 
     // Return true to indicate we'll respond asynchronously
     return true;
   }
 
   if (message.type === 'SAVE_DATA') {
-    browserAPI.storage.local.set({ data: message.data }).then(() => {
-      sendResponse({ success: true });
-    }).catch((error: { message: any; }) => {
-      console.error('Error saving data:', error);
-      sendResponse({ success: false, error: error.message });
-    });
+    browserAPI.storage.local
+      .set({ data: message.data })
+      .then(() => {
+        sendResponse({ success: true });
+      })
+      .catch((error: { message: any }) => {
+        console.error('Error saving data:', error);
+        sendResponse({ success: false, error: error.message });
+      });
 
     return true;
   }
@@ -37,7 +43,7 @@ browserAPI.runtime.onMessage.addListener((message: any, sender: any, sendRespons
 });
 
 // Example: Listen for installation or update
-browserAPI.runtime.onInstalled.addListener((details: { reason: string; }) => {
+browserAPI.runtime.onInstalled.addListener((details: { reason: string }) => {
   console.log('Extension installed or updated:', details);
 
   // Initialize default settings on install
@@ -46,8 +52,8 @@ browserAPI.runtime.onInstalled.addListener((details: { reason: string; }) => {
       settings: {
         theme: 'light',
         notifications: true,
-        lastUpdated: new Date().toISOString()
-      }
+        lastUpdated: new Date().toISOString(),
+      },
     });
   }
 });

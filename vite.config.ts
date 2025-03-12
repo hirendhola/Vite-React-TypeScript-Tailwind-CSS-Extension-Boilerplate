@@ -1,4 +1,3 @@
-
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // import path from "path"
 // import tailwindcss from "@tailwindcss/vite"
@@ -77,11 +76,10 @@
 //   };
 // });
 
-
-import path from "path"
-import tailwindcss from "@tailwindcss/vite"
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import path from 'path';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import webExtension from 'vite-plugin-web-extension';
 import fs from 'fs';
 
@@ -124,7 +122,7 @@ export default defineConfig(({ mode }) => {
     ],
     resolve: {
       alias: {
-        "@": path.resolve(__dirname, "./src"),
+        '@': path.resolve(__dirname, './src'),
       },
     },
     define: {

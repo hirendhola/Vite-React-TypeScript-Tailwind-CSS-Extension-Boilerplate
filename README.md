@@ -38,47 +38,21 @@ npm install
 
 # Start the development server
 npm run dev
+npm dev:chrome
+npm dev:firefox
+npm dev:safari
+npm dev:all
 ```
 
 Visit `http://localhost:5173` to see your app in action!
 
-## 📁 Project Structure
-
-```
-my-project/
-├── public/             # Static files
-├── src/
-│   ├── assets/         # Images, fonts, etc.
-│   ├── components/     # Reusable UI components
-│   ├── contexts/       # React context providers
-│   ├── hooks/          # Custom React hooks
-│   ├── pages/          # Page components
-│   ├── services/       # API services
-│   ├── types/          # TypeScript type definitions
-│   ├── utils/          # Utility functions
-│   ├── App.tsx         # Application entry point
-│   ├── index.css       # Global styles
-│   └── main.tsx        # React rendering
-├── .eslintrc.cjs       # ESLint configuration
-├── .prettierrc         # Prettier configuration
-├── index.html          # HTML entry point
-├── package.json        # Project dependencies
-├── postcss.config.js   # PostCSS configuration
-├── tailwind.config.js  # Tailwind CSS configuration
-├── tsconfig.json       # TypeScript configuration
-└── vite.config.ts      # Vite configuration
-```
-
 ## 📝 Available Scripts
 
-| Command           | Description                      |
-| ----------------- | -------------------------------- |
-| `npm run dev`     | Start the development server     |
-| `npm run build`   | Build for production             |
-| `npm run preview` | Preview production build locally |
-| `npm run lint`    | Run ESLint                       |
-| `npm run test`    | Run tests with Vitest            |
-| `npm run format`  | Format code with Prettier        |
+| Command         | Description                  |
+| --------------- | ---------------------------- |
+| `npm run dev`   | Start the development server |
+| `npm run build` | Build for production         |
+| `npm run lint`  | Run ESLint                   |
 
 ## ⚙️ Configuration
 
@@ -89,10 +63,6 @@ Vite configuration is in `vite.config.ts`. Key features:
 - HMR configured for seamless development
 - Source maps enabled for production builds
 - Test environment setup
-
-### Tailwind CSS
-
-Tailwind is configured in `tailwind.config.js` and initialized in `src/index.css`.
 
 ### TypeScript
 
@@ -148,8 +118,8 @@ module.exports = {
     extend: {
       colors: {
         // Add your custom colors
-        primary: "#3B82F6",
-        secondary: "#10B981",
+        primary: '#3B82F6',
+        secondary: '#10B981',
       },
       // ...other customizations
     },

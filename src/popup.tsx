@@ -1,17 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom/client";
-import { Button } from "./components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "./components/ui/card";
-import browserAPI, { getBrowserInfo } from "./lib/browser-api";
-import "./index.css";
+import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom/client';
+import { Button } from './components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/tabs';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './components/ui/card';
+import browserAPI, { getBrowserInfo } from './lib/browser-api';
+import './index.css';
 
 export const PopupApp = () => {
   const [activeTab, setActiveTab] = useState<any>(null);
@@ -34,19 +28,19 @@ export const PopupApp = () => {
           // Get page info from content script
           try {
             const response = await browserAPI.tabs.sendMessage(tabs[0].id!, {
-              type: "GET_PAGE_INFO",
+              type: 'GET_PAGE_INFO',
             });
             setPageInfo(response.data);
           } catch (err: any) {
-            console.error("Error communicating with content script:", err);
+            console.error('Error communicating with content script:', err);
             setError(
-              "Content script not accessible. The extension may need page refresh or additional permissions."
+              'Content script not accessible. The extension may need page refresh or additional permissions.'
             );
           }
         }
       } catch (err: any) {
-        console.error("Error getting active tab:", err);
-        setError(err.message || "Failed to get active tab");
+        console.error('Error getting active tab:', err);
+        setError(err.message || 'Failed to get active tab');
       } finally {
         setLoading(false);
       }
@@ -61,23 +55,18 @@ export const PopupApp = () => {
         <CardHeader>
           <CardTitle className="text-xl">My Extension</CardTitle>
           <CardDescription>
-            Walking on {browserInfo.name} (Manifest v
-            {browserInfo.manifestVersion})
+            Walking on {browserInfo.name} (Manifest v{browserInfo.manifestVersion})
           </CardDescription>
         </CardHeader>
         <CardContent>
           {loading ? (
             <div className="flex justify-center p-4">Loading...</div>
           ) : error ? (
-            <div className="bg-red-50 text-red-700 p-3 rounded">
-              Error: {error}
-            </div>
+            <div className="bg-red-50 text-red-700 p-3 rounded">Error: {error}</div>
           ) : (
             <Tabs defaultValue="info">
               <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="info text-white bg-white">
-                  Page Info
-                </TabsTrigger>
+                <TabsTrigger value="info text-white bg-white">Page Info</TabsTrigger>
                 <TabsTrigger value="actions">Actions</TabsTrigger>
               </TabsList>
 
@@ -109,7 +98,7 @@ export const PopupApp = () => {
                     onClick={() => {
                       if (activeTab?.id) {
                         browserAPI.tabs.sendMessage(activeTab.id, {
-                          type: "SHOW_STATUS",
+                          type: 'SHOW_STATUS',
                         });
                       }
                     }}
@@ -122,7 +111,7 @@ export const PopupApp = () => {
                     className="w-full"
                     onClick={() => {
                       browserAPI.runtime.sendMessage({
-                        type: "SAVE_DATA",
+                        type: 'SAVE_DATA',
                         data: {
                           lastVisited: activeTab?.url,
                           timestamp: Date.now(),
@@ -143,7 +132,7 @@ export const PopupApp = () => {
 };
 
 // Render the popup
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <PopupApp />
   </React.StrictMode>

@@ -4,4 +4,4 @@ if (import.meta.hot) {
   console.log('🔥 HMR is enabled');
 }
 
-export { };
+export {};
