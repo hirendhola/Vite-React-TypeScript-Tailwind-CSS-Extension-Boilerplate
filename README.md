@@ -49,7 +49,7 @@ A powerful, feature-rich boilerplate for building cross-browser extensions using
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/modern-browser-extension-boilerplate.git
+git clone [https://github.com/hirendhola/Vite-React-TypeScript-Tailwind-CSS-Extension-Boilerplate.git](https://github.com/hirendhola/Vite-React-TypeScript-Tailwind-CSS-Extension-Boilerplate.git)
 
 # Install dependencies
 npm install
