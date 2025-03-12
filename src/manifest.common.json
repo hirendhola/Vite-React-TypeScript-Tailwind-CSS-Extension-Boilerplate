@@ -1,0 +1,6 @@
+{
+  "name": "My Extension",
+  "version": "1.0.0",
+  "description": "A browser extension built with Vite, React, TypeScript, and Tailwind CSS",
+  "permissions": ["storage", "activeTab"]
+}
